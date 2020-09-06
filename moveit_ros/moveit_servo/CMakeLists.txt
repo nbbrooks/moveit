@@ -141,6 +141,7 @@ install(
   TARGETS
     ${SERVO_LIB_NAME}
     pose_tracking
+    pose_tracking_example
     servo_server
     spacenav_to_twist
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
@@ -151,6 +152,9 @@ install(
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
+
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 #############
 ## TESTING ##
