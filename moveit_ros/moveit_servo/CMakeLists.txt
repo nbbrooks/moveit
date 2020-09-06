@@ -86,6 +86,17 @@ target_link_libraries(cpp_interface_example
   ${SERVO_LIB_NAME}
 )
 
+# An example of pose tracking
+add_executable(pose_tracking_example
+  src/cpp_interface_example/pose_tracking_example.cpp
+)
+add_dependencies(pose_tracking_example ${catkin_EXPORTED_TARGETS})
+target_link_libraries(pose_tracking_example
+  ${catkin_LIBRARIES}
+  ${SERVO_LIB_NAME}
+  pose_tracking
+)
+
 ########################################
 ## Library for servoing toward a pose ##
 ########################################
@@ -130,6 +141,7 @@ install(
   TARGETS
     ${SERVO_LIB_NAME}
     pose_tracking
+    pose_tracking_example
     servo_server
     spacenav_to_twist
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
@@ -140,6 +152,9 @@ install(
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
+
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 #############
 ## TESTING ##
