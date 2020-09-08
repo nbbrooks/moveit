@@ -69,6 +69,7 @@ add_library(${SERVO_LIB_NAME}
   src/joint_state_subscriber.cpp
   src/low_pass_filter.cpp
 )
+set_target_properties(${SERVO_LIB_NAME} PROPERTIES VERSION "${${PROJECT_NAME}_VERSION}")
 add_dependencies(${SERVO_LIB_NAME} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${SERVO_LIB_NAME}
   ${catkin_LIBRARIES}
