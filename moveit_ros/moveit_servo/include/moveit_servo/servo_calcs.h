@@ -58,6 +58,8 @@
 #include <moveit_servo/low_pass_filter.h>
 #include <moveit_servo/joint_state_subscriber.h>
 
+#include <atomic>
+
 namespace moveit_servo
 {
 class ServoCalcs
@@ -264,7 +266,7 @@ private:
 
   // Status
   StatusCode status_ = StatusCode::NO_WARNING;
-  bool stop_requested_ = false;
+  std::atomic<bool> stop_requested_ {false};
   bool paused_ = false;
   bool twist_command_is_stale_ = false;
   bool joint_command_is_stale_ = false;

@@ -44,7 +44,7 @@ namespace moveit_servo
 constexpr char LOGNAME[] = "joint_state_subscriber";
 
 // Constructor for the class that handles collision checking
-JointStateSubscriber::JointStateSubscriber(ros::NodeHandle& nh, const std::string& joint_state_topic_name)
+JointStateSubscriber::JointStateSubscriber(ros::NodeHandle& nh, const std::string& joint_state_topic_name) : latest_joint_state_(new sensor_msgs::JointState)
 {
   // subscribe to joints
   joint_state_sub_ = nh.subscribe(joint_state_topic_name, ROS_QUEUE_SIZE, &JointStateSubscriber::jointStateCB, this);
